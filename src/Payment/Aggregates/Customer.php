@@ -64,7 +64,7 @@ final class Customer extends AbstractEntity implements ConvertibleToSDKRequestsI
      */
     public function setName($name)
     {
-        $this->name = substr($name ?? "", 0, 64);
+        $this->name = mb_substr($name ?? "", 0, 64, 'UTF-8');
     }
 
     /**

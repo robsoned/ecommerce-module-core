@@ -51,7 +51,7 @@ final class Item extends AbstractEntity implements ConvertibleToSDKRequestsInter
      */
     public function setDescription($description)
     {
-        $this->description = substr($description, 0, 256);
+        $this->description = mb_substr($description, 0, 256, 'UTF-8');
     }
 
     /**
