@@ -108,7 +108,7 @@ class SubProduct extends AbstractEntity implements SubProductEntityInterface
      */
     public function setDescription($description)
     {
-        $description = substr(strip_tags($description), 0, 256);
+        $description = mb_substr(strip_tags($description), 0, 256, 'UTF-8');
 
         $this->description = $description;
         return $this;
@@ -133,7 +133,7 @@ class SubProduct extends AbstractEntity implements SubProductEntityInterface
             $name = preg_replace('/[^a-zA-Z0-9 ]+/i', '', $name ?? '');
         }
 
-        $this->name = substr($name, 0, 256);
+        $this->name = mb_substr($name, 0, 256, 'UTF-8');
         return $this;
     }
 

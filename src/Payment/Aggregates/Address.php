@@ -117,7 +117,7 @@ final class Address extends AbstractEntity implements ConvertibleToSDKRequestsIn
             $streetWithoutComma
         );
 
-        $this->street = substr($streetWithoutLineBreaks, 0, 64);
+        $this->street = mb_substr($streetWithoutLineBreaks, 0, 64, 'UTF-8');
 
         if (empty($this->street)) {
             $inputName = $this->i18n->getDashboard('street');
@@ -157,7 +157,7 @@ final class Address extends AbstractEntity implements ConvertibleToSDKRequestsIn
             $neighborhoodWithoutComma
         );
 
-        $this->neighborhood = substr($neighborhoodWithoutLineBreaks, 0, 64);
+        $this->neighborhood = mb_substr($neighborhoodWithoutLineBreaks, 0, 64, 'UTF-8');
 
         if (empty($this->neighborhood)) {
 
@@ -188,7 +188,7 @@ final class Address extends AbstractEntity implements ConvertibleToSDKRequestsIn
     public function setComplement($complement)
     {
         $complementWithoutLineBreaks = StringFunctionsHelper::removeLineBreaks($complement);
-        $this->complement = substr($complementWithoutLineBreaks, 0, 64);
+        $this->complement = mb_substr($complementWithoutLineBreaks, 0, 64, 'UTF-8');
         return $this;
     }
 
@@ -239,7 +239,7 @@ final class Address extends AbstractEntity implements ConvertibleToSDKRequestsIn
     public function setCity($city)
     {
         $this->city = trim(
-            substr($city, 0, 64)
+            mb_substr($city, 0, 64, 'UTF-8')
         );
 
         if (empty($this->city)) {
@@ -271,7 +271,7 @@ final class Address extends AbstractEntity implements ConvertibleToSDKRequestsIn
      */
     public function setCountry($country)
     {
-        $this->country = substr($country, 0, 2);
+        $this->country = mb_substr($country, 0, 2, 'UTF-8');
 
         if (empty($this->country)) {
 
@@ -317,7 +317,7 @@ final class Address extends AbstractEntity implements ConvertibleToSDKRequestsIn
      */
     public function setState($state)
     {
-        $this->state = substr($state, 0, 2);
+        $this->state = mb_substr($state, 0, 2, 'UTF-8');
 
         if (empty($this->state)) {
 
